@@ -10,6 +10,13 @@
 	Hello world!  
 </h1>
 
-<P>  The time on the server is ${serverTime}. 깃</P>
+<P>  The time on the server is ${serverTime}. 깃</P><br>
+<p>마이바티스 연동 테스트</p>
+<c:forEach var="user" items="${bList}">
+	<c:out value="${user.name}"/>
+	<c:out value="${user.id}"/>
+	<c:out value="${user.password}"/>
+	<br>
+</c:forEach>
 </body>
 </html>

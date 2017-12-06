@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xiness.std.first.dao.UserMapper">
+
+	<resultMap type="xiness.std.first.vo.UserVO" id="UserVO">
+		<result property="id" column="ID"/>
+		<result property="name" column="NAME"/>
+		<result property="password" column="PASSWORD"/>
+	</resultMap>
+	
+	<select id="selectAllUser" parameterType="xiness.std.first.vo.UserVO" resultMap="UserVO">
+		SELECT ID, NAME, PASSWORD
+    	FROM USERS
+	</select>
+</mapper>
