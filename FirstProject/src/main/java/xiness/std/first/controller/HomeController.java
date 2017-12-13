@@ -28,7 +28,7 @@ public class HomeController {
 
 	@Autowired
 	private UserService userService;
-
+	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */

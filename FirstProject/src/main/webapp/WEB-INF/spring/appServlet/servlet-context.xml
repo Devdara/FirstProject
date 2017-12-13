@@ -3,9 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -24,12 +26,15 @@
 	<!-- Controller -->
 	<context:component-scan base-package="xiness.std.first.**" />
 	
+	<!-- DB properties -->
+	<util:properties id="props" location="classpath:/mysql.properties" />
+	
 	<!-- MyBatis -->
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <beans:property name="url" value="jdbc:mysql://localhost:3306/springbook"/>
-        <beans:property name="username" value="root"/>
-        <beans:property name="password" value="root00"/>
+		<beans:property name="driverClassName" value="#{props.driver}"/>
+        <beans:property name="url" value="#{props.url}"/>
+        <beans:property name="username" value="#{props.username}"/>
+        <beans:property name="password" value="#{props.password}"/>
     </beans:bean>
     
     <beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -46,6 +51,7 @@
 		<beans:property name="dataSource" ref="dataSource" />
 	</beans:bean>
 	
+	<!-- Mapper -->
 	<beans:bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
     	<beans:property name="basePackage" value="xiness.std.first.dao"></beans:property>
 	</beans:bean>

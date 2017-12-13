@@ -7,8 +7,11 @@
 	<name>FirstProject</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
+	
+	<!-- profiles -->
+	
 	<properties>
-		<java-version>1.6</java-version>
+		<java-version>1.7</java-version>
 		<org.springframework-version>3.1.1.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
@@ -156,6 +159,13 @@
 		    <artifactId>mysql-connector-java</artifactId>
 		    <version>5.1.31</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/aopalliance/aopalliance -->
+		<dependency>
+		    <groupId>aopalliance</groupId>
+		    <artifactId>aopalliance</artifactId>
+		    <version>1.0</version>
+		</dependency>
 		 
 	</dependencies>
     <build>
@@ -179,24 +189,32 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.5.1</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                     <compilerArgument>-Xlint:all</compilerArgument>
                     <showWarnings>true</showWarnings>
                     <showDeprecation>true</showDeprecation>
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.1</version>
-                <configuration>
-                    <url>http://localhost:8080/manager/html</url>
-                    <path>/</path>
-                    <server>tomcat</server>
-                    <update>true</update>
-                </configuration>
-            </plugin>
+			    <groupId>org.apache.tomcat.maven</groupId>
+			    <artifactId>tomcat7-maven-plugin</artifactId>
+			    <version>2.1</version>
+			    <configuration>
+			        <!-- Path -->
+			        <path>/deploytest</path>
+			        <!-- 구동중인 톰캣의 주소 + /manager/html -->
+			        <url>http://localhost:5050/manager/html</url>
+			        <!-- 톰캣 사용자 정보 -->
+			        <username>tomcat</username>
+			        <password>tomcat</password>
+			    </configuration>
+			</plugin>
         </plugins>
+        <!-- resource -->
+        
+        
+        
     </build>
+
 </project>
