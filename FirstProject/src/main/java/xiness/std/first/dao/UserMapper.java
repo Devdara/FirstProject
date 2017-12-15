@@ -7,5 +7,6 @@ import xiness.std.first.vo.UserVO;
 public interface UserMapper {
 
 	public List<UserVO> selectAllUser();
+	public List<UserVO> selectAdmin(String sName);
 	
 }//

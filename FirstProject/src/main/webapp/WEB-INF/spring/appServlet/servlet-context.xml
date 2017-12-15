@@ -24,6 +24,6 @@
 	</beans:bean>
 	
 	
-	<context:component-scan base-package="xiness.std.first.**" />
+	<context:component-scan base-package="xiness.std.first" />
 	
 </beans:beans>

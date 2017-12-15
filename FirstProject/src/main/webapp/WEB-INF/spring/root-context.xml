@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans
+<beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:util="http://www.springframework.org/schema/util"
 	xmlns:beans="http://www.springframework.org/schema/beans"
@@ -11,31 +11,34 @@
     <!-- DB properties -->
 	<util:properties id="props" location="classpath:/mysql.properties" />
 	
-	<!-- MyBatis -->
-	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+<!-- MyBatis -->
+	<!-- dataSource -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<beans:property name="driverClassName" value="#{props.driver}"/>
         <beans:property name="url" value="#{props.url}"/>
         <beans:property name="username" value="#{props.username}"/>
         <beans:property name="password" value="#{props.password}"/>
-    </beans:bean>
+    </bean>
     
-    <beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <beans:property name="dataSource" ref="dataSource" />
-        <beans:property name="mapperLocations" value="classpath:mybatis/query/*.xml" />
-    </beans:bean>
+    <!-- SqlSessionFactory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="mapperLocations" value="classpath:mybatis/query/*.xml" />
+    </bean>
     
-    <beans:bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
-		<beans:constructor-arg ref="sqlSessionFactory" />
-	</beans:bean>
+    <!-- SqlSessionTemplate -->
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
 	
 	<!-- 트랜잭션 -->
-	<beans:bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<beans:property name="dataSource" ref="dataSource" />
-	</beans:bean>
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
 	
 	<!-- Mapper -->
-	<beans:bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-    	<beans:property name="basePackage" value="xiness.std.first.dao"></beans:property>
-	</beans:bean>		
-		
-</beans:beans>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    	<property name="basePackage" value="xiness.std.first.dao"></property>
+	</bean>		
+<!-- MyBatis -->		
+</beans>

@@ -7,4 +7,5 @@ import xiness.std.first.vo.UserVO;
 public interface UserService {
 
 	public List<UserVO> selectAllUser();
+	public List<UserVO> selectAdmin(String sName);
 }

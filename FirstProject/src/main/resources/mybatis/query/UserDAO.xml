@@ -8,8 +8,14 @@
 		<result property="password" column="PASSWORD"/>
 	</resultMap>
 	
-	<select id="selectAllUser" parameterType="xiness.std.first.vo.UserVO" resultMap="UserVO">
+	<select id="selectAllUser" resultMap="UserVO">
 		SELECT ID, NAME, PASSWORD
     	FROM USERS
+	</select>
+	
+	<select id="selectAdmin" parameterType="String" resultMap="UserVO">
+		SELECT ID, NAME, PASSWORD
+    	FROM USERS
+    	WHERE id=#{sName}
 	</select>
 </mapper>

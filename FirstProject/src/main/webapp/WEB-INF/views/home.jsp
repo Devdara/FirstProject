@@ -18,5 +18,13 @@
 	<c:out value="${user.password}"/>
 	<br>
 </c:forEach>
+<br>
+<br>
+<c:forEach var="admin" items="${aList}">
+	<c:out value="${admin.name}"/>
+	<c:out value="${admin.id}"/>
+	<c:out value="${admin.password}"/>
+	<br>
+</c:forEach>
 </body>
 </html>

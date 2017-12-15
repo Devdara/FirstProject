@@ -18,7 +18,13 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<UserVO> selectAllUser() {
+		System.out.println("UserServiceImpl클래스 selectAllUser()호출");
 		return userMapper.selectAllUser();
+	}
+
+	@Override
+	public List<UserVO> selectAdmin(String sName) {
+		return userMapper.selectAdmin(sName);
 	}
 
 }//

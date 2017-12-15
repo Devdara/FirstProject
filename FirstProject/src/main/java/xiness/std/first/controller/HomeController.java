@@ -46,6 +46,9 @@ public class HomeController {
 		List<UserVO> bList = userService.selectAllUser();
 		model.addAttribute("bList", bList );
 		
+		List<UserVO> aList = userService.selectAdmin("admin");
+		model.addAttribute("aList", aList );
+		
 		return "home";
 	}
 	
