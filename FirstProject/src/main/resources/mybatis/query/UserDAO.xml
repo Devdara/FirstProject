@@ -18,4 +18,8 @@
     	FROM USERS
     	WHERE id=#{sName}
 	</select>
+	
+	<insert id="insertUser">
+	
+	</insert>
 </mapper>

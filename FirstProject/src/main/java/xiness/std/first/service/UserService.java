@@ -8,4 +8,5 @@ public interface UserService {
 
 	public List<UserVO> selectAllUser();
 	public List<UserVO> selectAdmin(String sName);
+	public int insertUser();
 }

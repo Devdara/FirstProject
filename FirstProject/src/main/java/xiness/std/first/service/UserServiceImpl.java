@@ -27,4 +27,9 @@ public class UserServiceImpl implements UserService {
 		return userMapper.selectAdmin(sName);
 	}
 
+	@Override
+	public int insertUser() {
+		return userMapper.insertUser();
+	}
+
 }//
