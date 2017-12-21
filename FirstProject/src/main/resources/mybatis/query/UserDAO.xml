@@ -19,7 +19,8 @@
     	WHERE id=#{sName}
 	</select>
 	
-	<insert id="insertUser">
-	
+	<insert id="insertId" parameterType="String">
+		INSERT INTO USERS(id)
+		VALUES(#{id})
 	</insert>
 </mapper>

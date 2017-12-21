@@ -49,6 +49,9 @@ public class HomeController {
 		List<UserVO> aList = userService.selectAdmin("admin");
 		model.addAttribute("aList", aList );
 		
+		int id = userService.insertId("zzzz");
+		System.out.println("id >>> : " + id);
+		
 		return "home";
 	}
 	
